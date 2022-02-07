@@ -1,0 +1,1285 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<title>Kiosk Fonts</title>
+<meta name="description" content="Kiosk Fonts, the international type foundry." />
+<meta name="author" content="Frank" />
+<meta name="keywords" content="font foundry, typefaces, type design, kiosk fonts, kioskfonts, KF, KF A4, black frituur, KF fleischwurst, PX barok, Ghana signpainters, KF pappe, KF roundenau, KF monaural, KF sommerfest, steelcut, wüste fraktale, KF format, KF coswig, frank1 grießhammer, frank1 griesshammer, portfolio, hbksaar, haiko günther, typography, peter maffay in flammen" />
+<meta name="robots" content="follow,index" />
+
+<link rel="stylesheet" href="css/main.css" type="text/css" />
+
+<script src="js/noscript.js" type="text/javascript"></script>
+<script src="js/prototype.js" type="text/javascript"></script>
+<script src="js/scriptaculous.js" type="text/javascript"></script>
+<script src="js/nospam.js" type="text/javascript"></script>
+<script src="js/mouseover.js" type="text/javascript"></script>
+<script src="js/analytics.js" type="text/javascript"></script>
+<script src="js/mahah.js" type="text/javascript"></script>
+
+<!-- SCRIPTE -->
+<script type="text/javascript">
+
+//-----MARKISEN
+Markisen = new Array('fleischwurst', 'druckerei', 'sommerfest', 'rex', 'senor', 'senor2', 'healer', 'pappe', 'markise2', 'a4', 'safari', 'format', 'frituur', 'monaural', 'steelcut', 'cocktail', 'end'); //Alle Markisen von unten in richtiger Reihenfolge
+var nextMarkise = Markisen[0]; //nächste Markise
+var nextMarkiseIndex = 0; //indexzahl der nächsten Markise
+
+function nextSlide () {
+if (nextMarkise == 'end') //bei der letzen Markise angekommen
+{
+Effect.SlideDown (nextMarkise);
+nextMarkiseIndex = nextMarkiseIndex + 1;
+nextMarkise = Markisen[nextMarkiseIndex]; //setzt auf undefined
+Effect.Fade ('continuebutton');
+//Effect.Fade ('returntoshopbutton');
+}
+else
+{
+Effect.SlideDown (nextMarkise);
+nextMarkiseIndex++;
+nextMarkise = Markisen[nextMarkiseIndex];
+}
+}
+
+function openShowcase () {
+if (nextMarkiseIndex == 0) //fährt nur beim allerersten Klick Markisen aus
+{
+Effect.SlideDown (nextMarkise);
+nextMarkiseIndex++;
+nextMarkise = Markisen[nextMarkiseIndex];
+Effect.Appear ('continuebutton');
+Effect.Appear ('returntoshopbutton');
+}
+else //sonst gehe zur letzten geöffneten Markise
+{
+var x = nextMarkiseIndex - 1;
+var y = Markisen[x];
+Effect.ScrollTo(y, { duration: 1.5 });
+}
+}
+
+function goToShow (textstring) {
+var zielIndex = 0;
+var thisMarkiseIndex = nextMarkiseIndex - 1;
+//Wenn noch keine MArkisen ausgefahren: Buttons aktivieren
+if (nextMarkiseIndex == 0){
+Effect.Appear ('continuebutton');
+Effect.Appear ('returntoshopbutton');
+}
+//Indexzahl der Zielmarkise bestimmen
+while (textstring != Markisen[zielIndex]){
+zielIndex++;
+}
+//wenn unausgefahrenen Markisen unter Zielmarkise: diese ausfahren
+while (zielIndex > thisMarkiseIndex){
+Effect.SlideDown (nextMarkise);
+nextMarkiseIndex++;
+nextMarkise = Markisen[nextMarkiseIndex];
+thisMarkiseIndex = nextMarkiseIndex - 1;
+}
+//Wenn Zielmarkise = oberste Markise: Buttons de- und Menu aktivieren
+if (textstring == 'end'){
+Effect.Fade ('continuebutton');
+// Effect.Fade ('returntoshopbutton');
+}
+//Dann zur Zielmarkise fahren
+Effect.ScrollTo (textstring, { duration: 1.5 });
+}
+
+//-----OPENSHOP
+function openShop() {
+	Effect.Appear ('shop'); 
+	Effect.Appear ('returntoshopbuttoncover');
+	setTimeout("Effect.ScrollTo('kante', { duration: 1.3 })", 800);
+}
+
+//-----DOWNLOADFUNKTION 
+var counterroundenau = 0;
+var countersteelcut = 0;
+
+function freeDownload(target) {
+	document.getElementById(target).firstChild.nodeValue = parseInt(document.getElementById(target).firstChild.nodeValue) + 1;
+	if (target == 'downloadsroundenau'){
+		counterroundenau++;
+		if (counterroundenau == 1){
+//			location.href = 'download.php?filename=KF_roundenau_basic.zip';
+			location.href = 'download.php?filename=KF_roundenau_basic.txt';
+		};
+	}
+	if (target == 'downloadssteelcut'){
+		countersteelcut++;
+		if (countersteelcut == 1){
+			location.href = 'download.php?filename=steelcut-sgl.otf';
+		};
+	}
+
+}
+
+
+
+</script>
+
+</head>
+
+<body>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+
+ var _gaq = _gaq || [];
+ _gaq.push(['_setAccount', 'UA-5653116-2']);
+ _gaq.push(['_trackPageview']);
+
+ (function() {
+   var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+ })();
+
+</script>
+
+
+<!-- NO JAVASCRIPT -->
+<noscript>
+<div id="noscript" style="position:fixed; z-index:13; bottom:0px; left:0px; width:100%; height:130px; padding:10px; background-color:#FF00FF; display:block; color:#003333; font-size:14px; text-align:center;">
+A message from Saint Clare of Assisi:<br /><br />
+<b style="text-decoration:blink; font-size:18px;">Your browser doesn't support Javascript.</b><br /><br />
+Parts of this page will remain shrouded in mysteries to you. You can still buy our beautiful fonts though.<br />
+You could also try activating javascript in your browser's settings.<br />
+<br />
+<b>Impressum</b>: Inhaltlich Verantwortlich: Frank Grießhammer, Oberkotzauer Straße 48a, 95032 Hof
+</div>
+</noscript>
+
+
+<!-- PRELOAD -->
+<div style="width:0px; height:0px; overflow:hidden;">
+<img src="img/fader.png" alt="preload" /><img src="img/fader_80.png" alt="preload" /><img src="img/fader_85.png" alt="preload" /><img src="img/fader_90.png" alt="preload" />
+<img src="img/kante_1.png" alt="preload" />
+<img src="img/kante_2.png" alt="preload" /><img src="img/kante_2_hover.png" alt="preload" />
+<img src="img/kante_3.png" alt="preload" /><img src="img/kante_3_hover.png" alt="preload" />
+<img src="img/postit_C.png" alt="preload" />
+<img src="img/postit_B.png" alt="preload" />
+<img src="img/postit_A.png" alt="preload" />
+<img src="img/markise.png" alt="preload" />
+<img src="img/markise_fleischwurst.png" alt="preload" />
+<img src="img/markise_druckerei.png" alt="preload" />
+<img src="img/markise_sommerfest.png" alt="preload" />
+<img src="img/markise_rex.png" alt="preload" />
+<img src="img/badge_continue_hover.png" alt="preload" /><img src="img/badge_return_hover.png" alt="preload" />
+</div>
+
+
+<!-- MARKISEN -->
+
+<!-- END - oberste Markise -->
+<div id="end" style="background:url(img/markise.png); width:900px; display:none;">
+	<img src="img/markise_end.png" width="900" height="300" alt="markise" />
+</div>
+
+<!-- ghana Signpainter - Cocktail-->
+<div id="cocktail" style="background:url(img/markise.png); width:900px; display:none;">
+	<img src="img/markise_cocktail.png" width="900" height="700" alt="markise" />
+    <div class="cutout" style="top:-300px;">
+        <b>Ghana Signpainters - Cocktail</b><br />
+        <br />
+        by <a href="http://www.haikog.de" target="_blank">Heiko</a><br />
+        <br />
+        [<a href="javascript://" onclick="Effect.toggle('overview-cocktail', 'appear'); return false;"> View Details </a>]<br />
+       <!-- [<a href="#BUYLINK"> Buy now! </a>]-->
+	</div>
+</div>
+
+<!-- roundenau
+<div id="roundenau" style="background:url(img/markise.png); width:900px; display:none;">
+	<img src="img/markise_roundenau.png" width="900" height="700" alt="markise" />
+    <div class="cutout" style="top:-180px;">
+        <b>Roundenau</b><br />
+        very round & modular.<br />
+        <br />
+        by<a href="http://www.frgr.de" target="_blank"> Frank </a><br />
+        <br />
+        [<a href="javascript://" onclick="Effect.toggle('overview-roundenau', 'appear'); return false;"> View Details </a>]<br />
+        [<a href="#BUYLINK"> Buy now! </a>]
+	</div>
+</div>-->
+
+<!-- coswig
+<div id="coswig" style="background:url(img/markise.png); width:900px; display:none;">
+	<img src="img/markise_coswig.png" width="900" height="700" alt="markise" />
+    <div class="cutout" style="top:-400px;">
+        <b>Coswig</b><br />
+        Typeface or impertinence?<br />
+        <br />
+        by<a href="http://www.frgr.de" target="_blank"> Frank </a><br />
+        <br />
+        [<a href="javascript://" onclick="Effect.toggle('overview-coswig', 'appear'); return false;"> View Details </a>]
+	</div>
+</div>-->
+
+<!-- steelcut-->
+<div id="steelcut" style="background:url(img/markise.png); width:900px; display:none;">
+	<img src="img/markise_steelcut.png" width="900" height="700" alt="markise" />
+    <div class="cutout" style="top:-400px;">
+        <b>Steelcut</b><br />
+        constantly growing westernshit<br />
+        <br />
+        by <a href="http://www.haikog.de" target="_blank">Heiko</a><br />
+        <br />
+        [<a href="javascript://" onclick="Effect.toggle('overview-steelcut', 'appear'); return false;"> View Details </a>]<br />
+        <!--[<a href="#BUYLINK"> Buy now! </a>]-->
+	</div>
+</div>
+
+<!-- monaural-->
+<div id="monaural" style="background:url(img/markise.png); width:900px; display:none;">
+	<img src="img/markise_monaural.png" width="900" height="700" alt="markise" />
+    <div class="cutout" style="top:-400px;">
+        <b>Monaural</b><br />
+        a monospacing-effort<br />
+        <br />
+        by<a href="http://www.frgr.de" target="_blank"> Frank </a><br />
+        <br />
+        <!--[<a href="javascript://" onclick="Effect.toggle('overview-monaural', 'appear'); return false;"> View Details </a>]<br />
+        [<a href="#BUYLINK"> Buy now! </a>]-->
+	</div>
+</div>
+
+<!-- black frituur-->
+<div id="frituur" style="background:url(img/markise.png); width:900px; display:none;">
+	<img src="img/markise_frituur.png" width="900" height="700" alt="markise" />
+    <div class="cutout" style="top:-230px;">
+        <b>Black Frituur</b><br />
+        is beautiful.<br />
+        <br />
+        by <a href="http://www.haikog.de" target="_blank">Heiko</a><br />
+        <br />
+        [<a href="javascript://" onclick="Effect.toggle('overview-frituur', 'appear'); return false;"> View Details </a>]<br />
+        €30 [<a href="http://www.shareit.com/product.html?productid=300386499" target="_blank"> Buy now! </a>]
+	</div>
+</div>
+
+<!-- format-->
+<div id="format" style="background:url(img/markise.png); width:900px; display:none;">
+	<img src="img/markise_format.png" width="900" height="700" alt="markise" />
+    <div class="cutout" style="top:-230px;">
+        <b>Format</b><br />
+        High contrast typeface.<br />
+        <br />
+        by<a href="http://www.frgr.de" target="_blank"> Frank </a><br />
+        <br />
+        [<a href="javascript://" onclick="Effect.toggle('overview-format', 'appear'); return false;"> View Details </a>]<br />
+        <!--[<a href="#BUYLINK"> Buy now! </a>]-->
+	</div>
+</div>
+
+<!-- ghana Signpainter - Safari-->
+<div id="safari" style="background:url(img/markise.png); width:900px; display:none;">
+	<img src="img/markise_safari.png" width="900" height="700" alt="markise" />
+    <div class="cutout" style="top:-570px;">
+        <b>Ghana Signpainters - Safari</b><br />
+        <br />
+        by <a href="http://www.haikog.de" target="_blank"> Heiko </a><br />
+        <br />
+        [<a href="javascript://" onclick="Effect.toggle('overview-safari', 'appear'); return false;"> View Details </a>]<br />
+        €15 [<a href="http://www.shareit.com/product.html?productid=300385895" target="_blank"> Buy now! </a>]
+	</div>
+</div>
+
+<!-- A4-->
+<div id="a4" style="background:url(img/markise.png); width:900px; display:none;">
+	<img src="img/markise_a4.png" width="900" height="700" alt="markise" />
+    <div class="cutout" style="top:-350px;">
+        <b>A4</b><br />
+        following the DIN-proportions, for the creation of ink-saving big-scale displays.<br />
+        <br />
+        by <a href="http://www.frgr.de" target="_blank"> Frank </a><br />
+        <br />
+        <!--[<a href="javascript://" onclick="Effect.toggle('overview-a4', 'appear'); return false;"> View Details </a>]<br />
+        [<a href="#BUYLINK"> Buy now! </a>]-->
+	</div>
+</div>
+
+<!-- wüste Fraktale
+<div id="fraktale" style="background:url(img/markise.png); width:900px; display:none;">
+	<img src="img/markise_fraktale.png" width="900" height="700" alt="markise" />
+    <div class="cutout" style="top:-400px;">
+        <b>wüste Fraktale</b><br />
+        space invaders growing old.<br />
+        <br />
+        by<a href="http://www.haikog.de" target="_blank"> Heiko </a><br />
+        <br />
+        [<a href="javascript://" onclick="Effect.toggle('overview-fraktale', 'appear'); return false;"> View Details </a>]<br />
+        [<a href="#BUYLINK"> Buy now! </a>]
+	</div>
+</div>-->
+
+<div id="markise2" style="background:url(img/markise.png); width:900px; display:none;">
+<img src="img/markise_schneidematte.png" width="900" height="700" alt="markise" />
+</div>
+
+
+<!-- Pappe-->
+<div id="pappe" style="background:url(img/markise.png); width:900px; display:none;">
+	<img src="img/markise_pappe.png" width="900" height="700" alt="markise" />
+    <div class="cutout" style="top:-350px;">
+        <b>Pappe</b><br />
+        very bold randomizer face with alternate characters for almost every glyph.<br />
+        <br />
+        by <a href="http://www.frgr.de" target="_blank"> Frank </a><br />
+        <br />
+        [<a href="javascript://" onclick="Effect.toggle('overview-pappe', 'appear'); return false;"> View Details </a>]<br />
+        <!--[<a href="#BUYLINK"> Buy now! </a>]-->
+	</div>
+</div>
+
+<!-- ghana Signpainter - Divine Healer-->
+<div id="healer" style="background:url(img/markise.png); width:900px; display:none;">
+	<img src="img/markise_healer.png" width="900" height="800" alt="markise" />
+    <div class="cutout" style="top:-150px;">
+        <b>Ghana Signpainters <br />
+		Divine Healer</b><br />
+        <br />
+        by <a href="http://www.haikog.de" target="_blank"> Heiko </a><br />
+		<br />
+        [<a href="javascript://" onclick="Effect.toggle('overview-healer', 'appear'); return false;"> View Details </a>]<br />
+        €15 [<a href="http://www.shareit.com/product.html?productid=300385894" target="_blank"> Buy now! </a>]
+	</div>
+</div>
+
+<!-- px baroque
+<div id="px" style="background:url(img/markise.png); width:900px; display:none;">
+	<img src="img/markise_px.png" width="900" height="700" alt="markise" />
+    <div class="cutout" style="top:-300px;">
+        <b>PX Barok</b><br />
+        Magnificent script-face, handwritten with a pixel nib.<br />
+        <br />
+        by<a href="http://www.frgr.de" target="_blank"> Frank </a><br />
+        <br />
+        [<a href="javascript://" onclick="Effect.toggle('overview-px', 'appear'); return false;"> View Details </a>]<br />
+        [<a href="#BUYLINK"> Buy now! </a>]
+	</div>
+</div>-->
+
+<!--senor huerta2-->
+<div id="senor2" style="background:url(img/markise.png); width:900px; display:none;">
+	<img src="img/markise_senor2.png" width="900" height="700" alt="markise" />
+    <div class="cutout" style="top:-590px;">
+       	<b>Señor Huerta Regular</b><br />
+        A slightly heavier version of the all-time classic "Señor Huerta"!<br />
+        <br />
+        by <a href="http://www.conestruction.blogspot.com" target="_blank">The Conestruction Inc.</a><br />
+		<br />
+        [<a href="javascript://" onclick="Effect.toggle('overview-senor', 'appear'); return false;"> View Details </a>]<br />
+    </div>
+</div>
+
+<!--senor huerta-->
+<div id="senor" style="background:url(img/markise.png); width:900px; display:none;">
+	<img src="img/markise_senor.png" width="900" height="700" alt="markise" />
+    <div class="cutout" style="top:-270px;">
+       	<b>Señor Huerta Thin</b><br />
+        <br />
+        by <a href="http://www.conestruction.blogspot.com" target="_blank">The Conestruction Inc.</a><br />
+		<br />
+        [<a href="javascript://" onclick="Effect.toggle('overview-senor', 'appear'); return false;"> View Details </a>]<br />
+    </div>
+</div>
+
+<!-- rex  mundi-->
+<div id="rex" style="background:url(img/markise.png); width:900px; display:none;">
+	<img src="img/markise_rex.png" width="900" height="700" alt="markise" />
+    <div class="cutout" style="top:-250px;">
+        <b>Rex Mundi</b><br />
+        the first useful semi-serif ever, available in regular and heavy.<br />
+        high readability.<br />
+        <br />
+        by<a href="http://www.haikog.de" target="_blank"> Heiko </a><br />
+        <br />
+        [<a href="javascript://" onclick="Effect.toggle('overview-rex', 'appear'); return false;"> View Details </a>]<br />
+        <!--[<a href="#BUYLINK"> Buy now! </a>]-->
+	</div>
+</div>
+
+<!--Sommerfest-->
+<div id="sommerfest" style="background:url(img/markise.png); width:900px; display:none; z-index:1;">
+	<img src="img/markise_sommerfest.png" width="900" height="700" alt="markise" />
+    <div class="cutout" style="top:-380px;">
+        <b>Sommerfest</b><br />
+        high-speed type production for western-style lettering, preferably in very dark places.<br />
+        <br />
+        by<a href="http://www.frgr.de" target="_blank"> Frank </a><br />
+        illustrations by hko and<a href="http://www.conestruction.blogspot.com" target="_blank"> cone </a><br /> 
+        <br />
+        [<a href="javascript://" onclick="Effect.toggle('overview-sommerfest', 'appear'); return false;"> View Details </a>]<br />
+        <!--[<a href="#BUYLINK"> Buy now! </a>]-->
+	</div>
+</div>
+
+<!--Druckerei-->
+<div id="druckerei" style="background:url(img/markise.png); width:900px; display:none; z-index:1;">
+	<img src="img/markise_druckerei.png" width="900" height="700" alt="markise" />
+    <div class="cutout" style="top:-670px;">
+        <b>druckerei</b><br />
+        pseudorandom letter replacement fools the mind!<br />
+        <br />
+        by<a href="http://www.haikog.de" target="_blank"> Heiko </a><br />
+        <br />
+        [<a href="javascript://" onclick="Effect.toggle('overview-druckerei', 'appear'); return false;"> View Details </a>]<br />
+        €30 [<a href="http://www.shareit.com/product.html?productid=300385897" target="_blank"> Buy now! </a>]
+	</div>
+</div>
+
+<!--Fleischwurst-->
+<div id="fleischwurst" style="background:url(img/markise.png); width:900px; display:none; z-index:1;">
+    <img src="img/markise_fleischwurst.png" width="900" height="700" alt="markise" />
+    <div class="cutout" style="top:-230px;">
+        <b>Fleischwurst fett</b><br />
+        Full-featured modern-style blackletter font.<br />
+		<br />
+        by<a href="http://www.frgr.de" target="_blank"> Frank </a><br />
+        <br />
+        [<a href="javascript://" onclick="Effect.toggle('overview-fleischwurst', 'appear'); return false;"> View Details </a>]<br />
+        <!--[<a href="#BUYLINK"> Buy now! </a>]-->	<br />
+	</div>
+	<img src="img/markise.png" width="900" height="100" alt="markise" />
+</div>
+
+
+
+
+
+<!-- BUTTONS NAVIGATION KANTE -->
+
+<div id="continuebutton" style="position:absolute; top:0; width:900px; height:0; z-index:10; display:none;">
+	<div style="position:absolute; right:-20px; top:30px;">
+    <a href="javascript://" onclick="nextSlide(); return false;"></a>
+	</div>
+</div>
+
+<div id="returntoshopbutton" style="position:fixed; top:0; width:900px; height:0; z-index:9; display:none;">
+	<div style="position:absolute; right:-20px; top:260px;">
+    <a href="javascript://" onclick="Effect.ScrollTo('kante', { duration: 1.5 }); return false;"></a>
+	</div>
+</div>
+
+<div id="kante" style="width:900px; height:125px;">
+	<img src="img/kante_1.png" alt="KF logo" width="400" height="125" style="float:left;" />
+	<a href="javascript://" id="kante_shop" onclick="openShop(); return false;"></a>
+<!--	<a href="javascript://" id="kante_shop" onclick="openShop(); Effect.Fade ('featured', { duration: 0.2 }); return false;"></a>-->
+	<a href="javascript://" id="kante_showcase" onclick="openShowcase(); return false;"></a>
+</div>
+
+<!--<div id="featured" style="width:900px; height:450px; text-align:center;">
+	<br /><br />
+	<img src="img/featured-fraktale.png" alt="featured product" />
+    <div style="position:relative; top:-600px;">[ featured product: wüste Fraktale&nbsp;&nbsp;<a href="javascript://" onclick="Effect.toggle('overview-fraktale', 'appear'); return false;"> View Details </a>&nbsp;|&nbsp;<a href="https://secure.shareit.com/shareit/checkout.html?PRODUCT[300386498]=1" target="_blank"> Buy now! (€15) </a>]</div><br />
+</div>-->
+
+<div id="returntoshopbuttoncover" style="width:900px; margin:0 auto; height:0px; display:none;">	
+	<div style="position:relative; top:-200px; left:890px; width:30px; height:2600px; z-index:11; display:block;">
+		<img src="img/fade_top_bottom.png" alt="cover for the returntoshopbutton" width="35" height="100" /><br />
+    	<div style="background:url(img/fader_100.png); display:block; width:30px; height:2700px;"></div>
+	</div>
+</div>
+
+<br />
+
+
+
+<!--SHOP-->
+
+<div id="shop">
+
+<div class="shopentry" style="background-image:url(img/shopentry-fraktale.png);">
+	<a href="http://www.shareit.com/product.html?productid=300386498" target="_blank"><img src="img/label_15_1.png" alt="coming soon" /></a>
+	<span>
+        <b>Wüste Fraktale</b><br />
+    	[<a href="javascript://" onclick="Effect.toggle('overview-fraktale', 'appear'); return false;"> View Details </a>]<br />
+ <!--   	[<a href="javascript://" onclick="goToShow('fraktale'); return false;"> Preview in Showcase </a>]<br />   -->
+		€15 [<a href="http://www.shareit.com/product.html?productid=300386498" target="_blank"> Buy now! </a>]<br />
+	</span>
+</div>
+
+<div class="shopentry" style="background-image:url(img/shopentry-healer.png);">
+	<a href="http://www.shareit.com/product.html?productid=300385894" target="_blank"><img src="img/label_15_2.png" alt="€15" /></a>
+	<span><b>Ghana Signpainters Divine Healer</b><br />
+    	[<a href="javascript://" onclick="Effect.toggle('overview-healer', 'appear'); return false;"> View Details </a>]<br />
+    	[<a href="javascript://" onclick="goToShow('healer'); return false;"> Preview in Showcase </a>]<br />   
+    	€15 [<a href="http://www.shareit.com/product.html?productid=300385894" target="_blank"> Buy now! </a>]<br />
+	</span>
+</div>
+
+<div class="shopentry" style="background-image:url(img/shopentry-druckerei.png);">
+	<a href="http://www.shareit.com/product.html?productid=300385897" target="_blank"><img src="img/label_30_2.png" alt="€30" /></a>
+	<span><b>Druckerei</b><br />
+    	[<a href="javascript://" onclick="Effect.toggle('overview-druckerei', 'appear'); return false;"> View Details </a>]<br />
+    	[<a href="javascript://" onclick="goToShow('druckerei'); return false;"> Preview in Showcase </a>]<br />
+    	€30 [<a href="http://www.shareit.com/product.html?productid=300385897" target="_blank"> Buy now! </a>]<br />
+	</span>
+</div>
+
+<div class="shopentry" style="background-image:url(img/shopentry-safari.png);">
+	<a href="http://www.shareit.com/product.html?productid=300385895" target="_blank"><img src="img/label_15_1.png" alt="€15" /></a>
+	<span><b>Ghana Signpainters Safari</b><br />
+    	[<a href="javascript://" onclick="Effect.toggle('overview-safari', 'appear'); return false;"> View Details </a>]<br />
+    	[<a href="javascript://" onclick="goToShow('safari'); return false;"> Preview in Showcase </a>]<br />
+    	€15 [<a href="http://www.shareit.com/product.html?productid=300385895" target="_blank"> Buy now! </a>]<br />
+	</span>
+</div>
+
+<div class="shopentry" style="background-image:url(img/shopentry-internationale.png);">
+	<a href="http://www.shareit.com/product.html?productid=300386497" target="_blank"><img src="img/label_15_2.png" alt="€15" /></a>
+	<span><b>Internationale</b><br />
+    	[<a href="javascript://" onclick="Effect.toggle('overview-internationale', 'appear'); return false;"> View Details </a>]<br />
+        €15 [<a href="http://www.shareit.com/product.html?productid=300386497" target="_blank"> Buy now! </a>]<br />
+	</span>
+</div>
+
+<div class="shopentry" style="background-image:url(img/shopentry-frituur.png);">
+	<a href="http://www.shareit.com/product.html?productid=300386499" target="_blank"><img src="img/label_30_1.png" alt="coming soon" /></a>
+	<span>
+    	<b>Black Frituur</b><br />
+    	[<a href="javascript://" onclick="Effect.toggle('overview-frituur', 'appear'); return false;" class="shopentrya1"> View Details </a>]<br />
+    	[<a href="javascript://" onclick="goToShow('frituur'); return false;" class="shopentrya1"> Preview in Showcase </a>]<br />
+    	€30 [<a href="http://www.shareit.com/product.html?productid=300386499" class="shopentrya1" target="_blank"> Buy now! </a>]<br />
+	</span>
+</div>
+
+<div class="shopentry" style="background-image:url(img/shopentry-roundenau.png);">
+	<a href="javascript://" onclick="freeDownload('downloadsroundenau');"><img src="img/label_free_1.png" alt="free" /></a>
+	<span><b>Roundenau Basic</b><br />
+    	[<a href="javascript://" onclick="Effect.toggle('overview-roundenau', 'appear'); return false;"> View Details </a>]<br />
+<!-- 
+    	[<a href="javascript://" onclick="freeDownload('downloadsroundenau');"> Get it for free! </a>]<br />
+ -->
+    	[<a href="freefonts/KF_roundenau_basic.txt"> Get it for free! </a>]<br />
+        <em>downloaded <b id="downloadsroundenau" style="display:inline;">some</b> times</em> 	
+	</span>
+</div>
+
+<!--<div class="shopentry" style="background-image:url(img/shopentry-signpainters.png);">
+	<a href="#BUYLINK"><img src="img/label_30_1.png" /></a>
+	<span><b>Ghana Signpainters Paket</b><br />
+    	<em>including Cocktail, Divine Healer and Safari</em><br />
+    	€30 [<a href="#BUYLINK"> Buy now! </a>]<br />
+	</span>
+</div>-->
+
+<div class="shopentry" style="background-image:url(img/shopentry-micromieps.png);">
+	<a href="javascript://" onclick="Effect.toggle('soon', 'appear'); return false;"><img src="img/label_soon_2.png" alt="coming soon" /></a>
+	<span><b>Micromieps</b><br />
+    	[<a href="javascript://" onclick="Effect.toggle('overview-micromieps', 'appear'); return false;"> View Details </a>]<br />
+	</span>
+</div>
+
+<div class="shopentry" style="background-image:url(img/shopentry-roundenau_advanced.png);">
+	<a href="javascript://" onclick="Effect.toggle('soon', 'appear'); return false;"><img src="img/label_soon_3.png" alt="coming soon" /></a>
+	<span><b>Roundenau Advanced</b><br />
+    	[<a href="javascript://" onclick="Effect.toggle('overview-roundenau', 'appear'); return false;"> View Details </a>]<br />
+    <!--	€15 [<a href="#BUYLINK"> Buy now! </a>]<br />-->
+    </span>
+</div>
+
+<div class="shopentry" style="background-image:url(img/shopentry-steelcut_fll.png);">
+	<a href="javascript://" onclick="Effect.toggle('soon', 'appear'); return false;"><img src="img/label_soon_1.png" alt="coming soon" /></a>
+	<span><b>Steelcut Backfill</b><br />
+    	[<a href="javascript://" onclick="Effect.toggle('overview-steelcut', 'appear'); return false;"> View Details </a>]<br />
+    	[<a href="javascript://" onclick="goToShow('steelcut'); return false;"> Preview in Showcase </a>]<br />
+	</span>
+</div>
+
+<div class="shopentry" style="background-image:url(img/shopentry-steelcut_sgl.png);">
+	<a href="javascript://" onclick="Effect.toggle('soon', 'appear'); return false;"><img src="img/label_soon_3.png" alt="coming soon" /></a>
+	<span><b>Steelcut Singleline</b><br />
+    	[<a href="javascript://" onclick="Effect.toggle('overview-steelcut', 'appear'); return false;"> View Details </a>]<br />
+    	[<a href="javascript://" onclick="goToShow('steelcut'); return false;"> Preview in Showcase </a>]<br />
+    <!--	[<a href="javascript://" onclick="freeDownload('downloadssteelcut');"> Get it for free! </a>]<br />
+        <em>downloaded <div id="downloadssteelcut" style="display:inline;">some</div> times</em> -->
+	</span>
+</div>
+
+<div class="shopentry" style="background-image:url(img/shopentry-steelcut_pln.png);">
+	<a href="javascript://" onclick="Effect.toggle('soon', 'appear'); return false;"><img src="img/label_soon_2.png" alt="coming soon" /></a>
+	<span><b>Steelcut Plain</b><br />
+    	[<a href="javascript://" onclick="Effect.toggle('overview-steelcut', 'appear'); return false;"> View Details </a>]<br />
+    	[<a href="javascript://" onclick="goToShow('steelcut'); return false;"> Preview in Showcase </a>]<br />
+    <!--	€15 [<a href="#BUYLINK"> Buy now! </a>]<br />-->
+	</span>
+</div>
+
+<div class="shopentry" style="background-image:url(img/shopentry-steelcut_sol.png);">
+	<a href="javascript://" onclick="Effect.toggle('soon', 'appear'); return false;"><img src="img/label_soon_1.png" alt="coming soon" /></a>
+	<span><b>Steelcut Solid</b><br />
+    	[<a href="javascript://" onclick="Effect.toggle('overview-steelcut', 'appear'); return false;"> View Details </a>]<br />
+    	[<a href="javascript://" onclick="goToShow('steelcut'); return false;"> Preview in Showcase </a>]<br />
+    <!--	€15 [<a href="#BUYLINK"> Buy now! </a>]<br />-->
+	</span>
+</div>
+
+<div class="shopentry" style="background-image:url(img/shopentry-steelcut_shn.png);">
+	<a href="javascript://" onclick="Effect.toggle('soon', 'appear'); return false;"><img src="img/label_soon_3.png" alt="coming soon" /></a>
+	<span><b>Steelcut Shoenail</b><br />
+    	[<a href="javascript://" onclick="Effect.toggle('overview-steelcut', 'appear'); return false;"> View Details </a>]<br />
+    	[<a href="javascript://" onclick="goToShow('steelcut'); return false;"> Preview in Showcase </a>]<br />
+    <!--	€15 [<a href="#BUYLINK"> Buy now! </a>]<br />-->
+	</span>
+</div>
+
+<div class="shopentry" style="background-image:url(img/shopentry-steelcut_edw.png);">
+	<a href="javascript://" onclick="Effect.toggle('soon', 'appear'); return false;"><img src="img/label_soon_1.png" alt="coming soon" /></a>
+	<span><b>Steelcut Edelweiss</b><br />
+    	[<a href="javascript://" onclick="Effect.toggle('overview-steelcut', 'appear'); return false;"> View Details </a>]<br />
+    	[<a href="javascript://" onclick="goToShow('steelcut'); return false;"> Preview in Showcase </a>]<br />
+    <!--	€15 [<a href="#BUYLINK"> Buy now! </a>]<br />-->
+	</span>
+</div>
+
+<div class="shopentry" style="background-image:url(img/shopentry-steelcut_dbl.png);">
+	<a href="javascript://" onclick="Effect.toggle('soon', 'appear'); return false;"><img src="img/label_soon_2.png" alt="coming soon" /></a>
+	<span><b>Steelcut Doubleline</b><br />
+    	[<a href="javascript://" onclick="Effect.toggle('overview-steelcut', 'appear'); return false;"> View Details </a>]<br />
+    	[<a href="javascript://" onclick="goToShow('steelcut'); return false;"> Preview in Showcase </a>]<br />
+    <!--	€15 [<a href="#BUYLINK"> Buy now! </a>]<br />-->
+	</span>
+</div>
+
+<!--<div class="shopentry" style="background-image:url(img/shopentry-steelcut_paket.png);">
+	<a href="#BUYLINK"><img src="img/label_60.png" /></a>
+	<span><b>Steelcut Paket</b><br />
+    	<em>including Backfill, Solid, Singleline, Doubleline, Plain, Shoenail and Edelweiss</em><br />
+    	€60 [<a href="#BUYLINK"> Buy now! </a>]<br />
+	</span>
+</div>-->
+
+<div class="shopentry" style="background-image:url(img/shopentry-rexmundi.png);">
+	<a href="javascript://" onclick="Effect.toggle('soon', 'appear'); return false;"><img src="img/label_soon_1.png" alt="coming soon" /></a>
+	<span><b>Rex Mundi</b><br />
+    	[<a href="javascript://" onclick="Effect.toggle('overview-rex', 'appear'); return false;"> View Details </a>]<br />
+    	[<a href="javascript://" onclick="goToShow('rex'); return false;"> Preview in Showcase </a>]<br />
+    <!--	€30 [<a href="#BUYLINK"> Buy now! </a>]<br />-->
+	</span>
+</div>
+
+<div class="shopentry" style="background-image:url(img/shopentry-rexmundi_schwer.png);">
+	<a href="javascript://" onclick="Effect.toggle('soon', 'appear'); return false;"><img src="img/label_soon_2.png" alt="coming soon" /></a>
+	<span><b>Rex Mundi Schwer</b><br />
+    	[<a href="javascript://" onclick="Effect.toggle('overview-rex_schwer', 'appear'); return false;"> View Details </a>]<br />
+    	[<a href="javascript://" onclick="goToShow('rex'); return false;"> Preview in Showcase </a>]<br />
+    <!--	€30 [<a href="#BUYLINK"> Buy now! </a>]<br />-->
+	</span>
+</div>
+
+<!--<div class="shopentry" style="background-image:url(img/shopentry-rexmundi_paket.png);">
+	<a href="#BUYLINK"><img src="img/label_50.png" /></a>
+	<span><b>Rex Mundi Paket</b><br />
+    	<em>including Rex Mundi and Rex Mundi Schwer</em><br />
+    	€50 [<a href="#BUYLINK"> Buy now! </a>]<br />
+	</span>
+</div>-->
+
+<div class="shopentry" style="background-image:url(img/shopentry-format.png);">
+	<a href="javascript://" onclick="Effect.toggle('soon', 'appear'); return false;"><img src="img/label_soon_3.png" alt="coming soon" /></a>
+	<span>
+    	<b>Format</b><br />
+    	[<a href="javascript://" onclick="Effect.toggle('overview-format', 'appear'); return false;"> View Details </a>]<br />
+    	[<a href="javascript://" onclick="goToShow('format'); return false;"> Preview in Showcase </a>]<br />
+    <!--	€30 [<a href="#BUYLINK"> Buy now! </a>]<br />-->
+	</span>
+</div>
+
+<div class="shopentry" style="background-image:url(img/shopentry-fleischwurst.png);">
+	<a href="javascript://" onclick="Effect.toggle('soon', 'appear'); return false;"><img src="img/label_soon_3.png" alt="coming soon" /></a>
+	<span>
+    	<b>Fleischwurst Fett</b><br />
+        [<a href="javascript://" onclick="Effect.toggle('overview-fleischwurst', 'appear'); return false;" class="shopentrya2"> View Details </a>]<br />
+    	[<a href="javascript://" onclick="goToShow('fleischwurst'); return false;" class="shopentrya2"> Preview in Showcase </a>]<br />
+    <!--    €30 [<a href="#BUYLINK" class="shopentrya2"> Buy now! </a>]<br />-->
+	</span>
+</div>
+
+<div class="shopentry" style="background-image:url(img/shopentry-sommerfest.png);">
+	<a href="javascript://" onclick="Effect.toggle('soon', 'appear'); return false;"><img src="img/label_soon_1.png" alt="coming soon" /></a>
+	<span>
+    	<b>Sommerfest</b><br />
+    	[<a href="javascript://" onclick="Effect.toggle('overview-sommerfest', 'appear'); return false;"> View Details </a>]<br />
+        [<a href="javascript://" onclick="goToShow('sommerfest'); return false;"> Preview in Showcase </a>]<br />
+ <!--   	[<a href="#BUYLINK"> Buy now! </a>]<br />   -->
+	</span>
+</div>
+
+<div class="shopentry" style="background-image:url(img/shopentry-cocktail.png);">
+	<a href="javascript://" onclick="Effect.toggle('soon', 'appear'); return false;"><img src="img/label_soon_2.png" alt="coming soon" /></a>
+	<span><b>Ghana Signpainters Cocktail</b><br />
+    	[<a href="javascript://" onclick="Effect.toggle('overview-cocktail', 'appear'); return false;"> View Details </a>]<br />
+     	[<a href="javascript://" onclick="goToShow('cocktail'); return false;"> Preview in Showcase </a>]<br />
+	<!--   	€15 [<a href="#BUYLINK"> Buy now! </a>]<br />-->
+	</span>
+</div>
+
+<div class="shopentry" style="background-image:url(img/shopentry-pappe.png);">
+	<a href="javascript://" onclick="Effect.toggle('soon', 'appear'); return false;"><img src="img/label_soon_1.png" alt="coming soon" /></a>
+	<span><b>Pappe</b><br />
+    	[<a href="javascript://" onclick="Effect.toggle('overview-pappe', 'appear'); return false;"> View Details </a>]<br />
+    	[<a href="javascript://" onclick="goToShow('pappe'); return false;"> Preview in Showcase </a>]<br />
+    <!--	€15 [<a href="#BUYLINK"> Buy now! </a>]<br />-->
+	</span>
+</div>
+
+<div class="shopentry" style="background-image:url(img/shopentry-px.png);">
+	<a href="javascript://" onclick="Effect.toggle('soon', 'appear'); return false;"><img src="img/label_soon_3.png" alt="coming soon" /></a>
+	<span>
+    	<b>Px Barok</b> <br />
+    	[<a href="javascript://" onclick="Effect.toggle('overview-px', 'appear'); return false;"> View Details </a>]<br />
+<!--        [<a href="javascript://" onclick="goToShow('px'); return false;"> Preview in Showcase </a>]<br />   -->
+ <!--   	€30 [<a href="#BUYLINK"> Buy now! </a>]<br />-->
+	</span>
+</div>
+
+<div class="shopentry" style="background-image:url(img/shopentry-pichard.png);">
+	<a href="javascript://" onclick="Effect.toggle('nfs', 'appear'); return false;"><img src="img/label_nfs_1.png" alt="mot for sale" /></a>
+	<span><b>Pichard</b><br />
+    	[<a href="javascript://" onclick="Effect.toggle('overview-pichard', 'appear'); return false;"> View Details </a>]<br />
+	</span>
+</div>
+
+<div class="shopentry" style="background-image:url(img/shopentry-senorhuerta.png);">
+	<a href="javascript://" onclick="Effect.toggle('nfs', 'appear'); return false;"><img src="img/label_nfs_3.png" alt="not for sale" /></a>
+	<span><b>Señor Huerta</b><br />
+    	[<a href="javascript://" onclick="Effect.toggle('overview-senor', 'appear'); return false;"> View Details </a>]<br />
+    	[<a href="javascript://" onclick="goToShow('senor2'); return false;"> Preview in Showcase </a>]<br />
+	</span>
+</div>
+
+<!--<div class="shopentry" style="background-image:url(img/shopentry-senorhuerta_thin.png);">
+	<a href="#NOGO"><img src="img/label_nfs.png" /></a>
+	<span><b>Señor Huerta Thin</b><br />
+    	[<a href="javascript://" onclick="Effect.toggle('overview-senor', 'appear'); return false;"> View Details </a>]<br />
+    	[<a href="javascript://" onclick="goToShow('senor'); return false;"> Preview in Showcase </a>]<br />
+	</span>
+</div>-->
+
+<div class="shopentry" style="background-image:url(img/shopentry-coswig.png);">
+	<a href="javascript://" onclick="Effect.toggle('nfs', 'appear'); return false;"><img src="img/label_nfs_2.png" alt="not for sale" /></a>
+	<span><b>Coswig</b><br />
+    	[<a href="javascript://" onclick="Effect.toggle('overview-coswig', 'appear'); return false;"> View Details </a>]<br />
+ <!--   	[<a href="javascript://" onclick="goToShow('coswig'); return false;"> Preview in Showcase </a>]<br />    -->
+	</span>
+</div>
+
+<div class="shopentry" style="background-image:url(img/shopentry-charminarmin.png);">
+	<a href="javascript://" onclick="Effect.toggle('nfs', 'appear'); return false;"><img src="img/label_nfs_1.png" alt="not for sale" /></a>
+	<span><b>Charmin Armin</b><br />
+    	[<a href="javascript://" onclick="Effect.toggle('overview-charmin', 'appear'); return false;"> View Details </a>]<br />
+	</span>
+</div>
+
+<!--<div class="shopentry" style="background-image:url(img/shopentry-elan.png);">
+	<a href="#NOGO"><img src="img/label_nfs.png" /></a>
+	<span><b>Elan</b><br />
+    	[<a href="javascript://" onclick="Effect.toggle('overview-elan', 'appear'); return false;"> View Details </a>]<br />
+	</span>
+</div>-->
+
+</div>
+
+<script type="text/javascript"> document.getElementById("shop").style.display='none'; </script>
+
+<!-- INFORMATIONEN -->
+<br /><br /><br /><br />
+<div style="position:relative; bottom:0px; width:900px; height:60px; text-align:center;" id="informationen">
+Say <a href="javascript:noSpam('hello','kiosk-fonts.de')"><b>hello</b></a> to Kiosk Fonts!<br />
+
+<a href="javascript://" onclick="openShop(); return false;">[Our shop]</a> &nbsp;
+<a href="javascript://" onclick="openShowcase(); return false;">[Our showcase]</a> &nbsp;
+<a href="javascript://" onclick="Effect.toggle('description', 'appear'); return false;">[What is it?]</a> &nbsp;
+<a href="javascript://" onclick="Effect.toggle('people', 'appear'); return false;">[Who’s doing it?]</a> &nbsp;
+<a href="EULA.html" target="_blank">[EULA]</a> &nbsp;
+<a href="typesets.html" target="_blank">[Our typesets]</a> &nbsp;
+<a href="javascript://" onclick="Effect.toggle('impressum', 'appear'); return false;">[Impressum]</a> &nbsp;
+<br /><br />
+
+<div id="description" style="position:absolute; left:0px; top:-150px; height:200px; width:250px; background-image:url(img/postit_C.png);  text-align:left; display:none; z-index:21;">
+<script type="text/javascript">
+	new Draggable('description');
+</script>
+<div style="width:226px; padding:12px;">
+<b>Explanation</b> <br />
+Kiosk Fonts was born as Diploma Project of Frank Grießhammer at<a href="http://www.hbksaar.de/" target="_blank"> HBKsaar </a>in 2008.<br />
+Kiosk Fonts is both type foundry and online portfolio featuring fonts in all stages of development.<br /><br />
+<a href="javascript://" onclick="Effect.toggle('description', 'appear'); return false;">[ close ]</a>
+</div></div>
+
+<div id="people" style="position:absolute; left:260px; top:-190px; height:200px; width:250px; background-image:url(img/postit_B.png); text-align:left; display:none; z-index:21;">
+<script type="text/javascript">
+	new Draggable('people');
+</script>
+<div style="width:226px; padding:12px;">
+<b>Elucidation</b> <br />
+All typefaces, ideas and illustrations on this site by<a href="http://www.frgr.de"> Frank Grießhammer </a>and<a href="http://www.haikog.de" target="_blank"> Heiko Günther. </a>All rights reserved.<br /><br />
+Coding by<a href="http://www.haikog.de" target="_blank"> Heiko </a>again.<br /><br />
+Thanks to <a href="http://script.aculo.us/" target="_blank">script.aculo.us</a>, <a href="http://www.cssplay.co.uk/" target="_blank">CSSplay</a> and <a href="http://groups.google.com/group/XMLHttpRequest/browse_thread/thread/3deab0ff4778fdf7/a8f83be73f135ed5" target="_blank">sax'ntouebbe</a>.<br /><br />
+<a href="javascript://" onclick="Effect.toggle('people', 'appear'); return false;">[ close ]</a>
+</div></div>
+
+<div id="impressum" style="position:absolute; left:610px; top:-170px; height:200px; width:250px; background-image:url(img/postit_A.png); text-align:left; display:none; z-index:21;">
+<script type="text/javascript">
+	new Draggable('impressum');
+</script>
+<div style="width:226px; padding:12px;">
+<b>Impressum</b><br />
+Inhaltlich Verantwortlich:<br /><br />
+Frank Grießhammer &nbsp;&nbsp;(<a href="javascript:noSpam('hello','kiosk-fonts.de')">Email</a>)<br />
+Oberkotzauer Straße 48a<br />
+95032 Hof<br /><br />
+Our CSS is protected by Saint Isidore of Seville, Javascript and PHP handling by Saint Clare of Assisi.<br /><br />
+<a href="javascript://" onclick="Effect.toggle('impressum', 'appear'); return false;">[ close ]</a>
+</div></div>
+
+<div id="soon" style="position:fixed; left:500px; top:200px; height:200px; width:250px; background-image:url(img/postit_D.png); text-align:left; display:none; z-index:21;">
+<script type="text/javascript">
+	new Draggable('soon');
+</script>
+<div style="width:226px; padding:12px;">
+<b>Coming Soon</b> <br /><br />
+These typefaces are processed at the moment and will be released within the next few weeks. The further up the list, the earlier the release.<br /><br />
+If you should need one of these typefaces earlier,<a href="javascript:noSpam('hello','kiosk-fonts.de')"> contact us. </a><br /><br />
+<a href="javascript://" onclick="Effect.toggle('soon', 'appear'); return false;">[ close ]</a>
+</div></div>
+
+<div id="nfs" style="position:fixed; left:600px; top:400px; height:200px; width:250px; background-image:url(img/postit_E.png); text-align:left; display:none; z-index:21;">
+<script type="text/javascript">
+	new Draggable('nfs');
+</script>
+<div style="width:226px; padding:12px;">
+<b>Not For Sale</b> <br /><br />
+These typefaces are not meant to be sold for various reasons. Either they do not match our high standard of quality or we just don't want anynody else to have them, or something else. <br /><br />
+Either way, if you absolutely want one of those, just<a href="javascript:noSpam('hello','kiosk-fonts.de')"> contact us. </a><br /><br />
+<a href="javascript://" onclick="Effect.toggle('nfs', 'appear'); return false;">[ close ]</a>
+</div></div>
+
+
+</div>
+
+
+<div style="position:absolute; bottom:-1px; height:1px; width:1px; display:block;"><img src="img/spacer.gif" alt="nothing" width="1" height="1" /></div>
+
+
+<!-- OVERVIEWS -->
+
+<div id="overview-sommerfest" style="display:none;">
+	<div class="overview">
+    <span>
+        <a href="javascript://" onclick="Effect.toggle('overview-sommerfest', 'appear'); return false;" class="closebutton">X close</a>
+        <span>Sommerfest</span>
+    	designed by <a href="http://www.frgr.de" target="_blank">Frank</a><br /><br />
+		Sommerfest includes our<a href="typesets.html" target="_blank"> basic typeset. </a><br /><br />
+        Sommerfest is a version of the well-known typeface »Mesquite«, adjusted for use during the HBK-Sommerfest 2008. Thus, it doesn't have too many glyphs, just capitals, each in two different versions. All in all, it includes 83 beautifully shaped letters, just enough to tackle most simple uses.<br /><br /><br /><br />
+        upper case (A - Z, each in 2 versions)<br />
+        <img src="img/overviews-sommerfest-maj.png" alt="upper case letters of the typeface Sommerfest" /><br />
+        numbers (1 - 0)<br />
+        <img src="img/overviews-sommerfest-num.png" alt="numbers of the typeface Sommerfest" /><br />
+        additional Glyphs (basic punctuation, Euro-sign €)<br />
+        <img src="img/overviews-sommerfest-spec.png" alt="additional glyphs of the typeface Sommerfest" /><br />
+	</span>
+    </div>
+</div>
+
+<div id="overview-fleischwurst" style="display:none;">
+	<div class="overview">
+    <span>
+        <a href="javascript://" onclick="Effect.toggle('overview-fleischwurst', 'appear'); return false;" class="closebutton">X close</a>
+        <span>Fleischwurst fett</span>
+    	designed by <a href="http://www.frgr.de" target="_blank">Frank</a><br /><br />
+        Fleischwurst includes our<a href="typesets.html" target="_blank"> basic typeset. </a><br /><br />
+        Fleischwurst is a blackletter typeface with nice and rounded corners. Possible uses include the production of stencils and the lettering of headlines in menues of restaurants where only sausages are served, to name just a few.<br /><br /><br /><br />
+        upper case (A - Z)<br />
+        <img src="img/overviews-fleischwurst-maj.png" alt="upper case letters of the typeface fleischwurst" /><br />
+        lower case (a - z)<br />
+        <img src="img/overviews-fleischwurst-min.png" alt="lower case letters of the typeface fleischwurst" /><br />
+        numbers (1 - 0), punctuation, additional glyphs (Euro-sign € ...)<br />
+        <img src="img/overviews-fleischwurst-num.png" alt="numbers of the typeface fleischwurst" /><br />
+    </span>
+    </div>
+</div>
+
+<div id="overview-px" style="display:none;">
+	<div class="overview">
+    <span>
+        <a href="javascript://" onclick="Effect.toggle('overview-px', 'appear'); return false;" class="closebutton">X close</a>
+        <span>PX Barok</span>
+    	designed by <a href="http://www.frgr.de" target="_blank">Frank</a><br /><br />
+        PX Barok includes our<a href="typesets.html" target="_blank"> basic typeset. </a><br /><br />
+        PX Barok has some features which will not be described in detail here. Whatever. Just mail this Frank guy and find out more. All the same, this typeface is amazing. Buy it now and be happy for the rest of your life.<br /><br /><br /><br />
+        upper case (A - Z)<br />
+        <img src="img/overviews-px-maj.png" alt="upper case letters of the typeface px barok" /><br />
+        lower case (a - z)<br />
+        <img src="img/overviews-px-num.png" alt="lower case letters of the typeface px barok" /><br />
+        numbers (1 - 0), punctuation, additional glyphs (Euro-sign € ...)<br />
+        <img src="img/overviews-px-spec.png" alt="numbers of the typeface px barok" /><br />
+    </span>
+    </div>
+</div>
+
+<div id="overview-fraktale" style="display:none;">
+	<div class="overview">
+    <span>
+        <a href="javascript://" onclick="Effect.toggle('overview-fraktale', 'appear'); return false;" class="closebutton">X close</a>
+        <span>Wüste Fraktale</span>
+    	designed by<a href="http://www.haikog.de" target="_blank"> Heiko </a><br /><br />
+        Wüste Fraktale includes our<a href="typesets.html" target="_blank"> basic typeset. </a><br /><br />
+        Wüste Fraktale is a classic blackletter fraktur typeface made up of 243 handcrafted pixelated letters. Additional regular as well as unusual ligatures make this typeface more than fit for most uses. It is impossible and totally pointless to anti-alias this typeface in sizes exceeding 30 points!<br /><br /><br /><br />
+        upper case (A - Z)<br />
+        <img src="img/overviews-fraktale-maj.png" alt="upper case letters of the typeface wüste fraktale" /><br />
+        lower case (a - z)<br />
+        <img src="img/overviews-fraktale-min.png" alt="lower case letters of the typeface wüste fraktale" /><br />
+        numbers (1 - 0), punctuation, additional glyphs (Euro-sign € ...)<br />
+        <img src="img/overviews-fraktale-num.png" alt="numbers of the typeface wüste fraktale" /><br />
+    </span>
+    </div>
+</div>
+
+<div id="overview-frituur" style="display:none;">
+	<div class="overview">
+    <span>
+        <a href="javascript://" onclick="Effect.toggle('overview-frituur', 'appear'); return false;" class="closebutton">X close</a>
+        <span>Black Frituur</span>
+    	designed by<a href="http://www.haikog.de" target="_blank"> Heiko </a><br />
+        featured in <a href="http://www.fraktur-mon-amour.com" target="_blank">Fraktur Mon Amour</a><br />
+		<br />
+        Black Frituur includes our<a href="typesets.html" target="_blank"> advanced typeset. </a><br /><br />
+        Black Frituur combines the broken and edgy shapes of a blackletter font with the round and soft shapes of written script. Excessive opentype features allow for a wide variety of formatting. Contextsensitive features connect single glyphs to give each line of text a handwritten appearance. Contains medieval numbers, an alternate set of capitals, opentype-fractions, lots of ligatures, and, of course, the infamous »long s«.
+        <br /><br /><br /><br />
+        upper case (A - Z in two varieties), lower case (a - z, containing contextsensitive varieties)<br />
+        <img src="img/overviews-frituur-maj.png" alt="upper case letters of the typeface black frituur" /><br />
+        numbers (1 - 0), punctuation, Euro-sign and @-sign, ligatures<br />
+        <img src="img/overviews-frituur-num.png" alt="numbers of the typeface black frituur" /><br />
+        depending on which features are activated, different looks can be achieved<br />
+        <img src="img/overviews-frituur-spec.png" alt="additional glyphs of the typeface black frituur" /><br />
+    </span>
+    </div>
+</div>
+
+<div id="overview-format" style="display:none;">
+	<div class="overview">
+    <span>
+        <a href="javascript://" onclick="Effect.toggle('overview-format', 'appear'); return false;" class="closebutton">X close</a>
+        <span>Format</span>
+    	designed by <a href="http://www.frgr.de" target="_blank">Frank</a><br /><br />
+        Format includes our<a href="typesets.html" target="_blank"> basic typeset. </a><br /><br />
+        <br /><br /><br />
+        upper case (A - Z)<br />
+        <img src="img/overviews-format-maj.png" alt="upper case letters of the typeface Format" /><br />
+        lower case (a - z)<br />
+        <img src="img/overviews-format-num.png" alt="lower case letters of the typeface Format" /><br />
+        numbers (1 - 0), punctuation, additional glyphs (Euro-sign € ...)<br />
+        <img src="img/overviews-format-spec.png" alt="numbers of the typeface Format" /><br />
+    </span>
+    </div>
+</div>
+
+<div id="overview-rex" style="display:none;">
+	<div class="overview">
+    <span>
+        <a href="javascript://" onclick="Effect.toggle('overview-rex', 'appear'); return false;" class="closebutton">X close</a>
+        <span>Rex Mundi (regular)</span>
+    	designed by<a href="http://www.haikog.de" target="_blank"> Heiko </a><br /><br />
+        Rex Mundi contains our<a href="typesets.html" target="_blank"> advanced typeset. </a>Rex Mundi is available in regular and bold.<br /><br />
+        Rex Mundi unites the easy readability in small sizes of the serif with the clarity and lightness of the sans. The serifs in the lower half generate a clear line of text, while the serifless upper halves make for a recognizable and beautiful overall appearance. Rex Mundi is the perfect typeface for running text, tackling display purposes with equal ease. Included are small caps, medieval as well as table numbers and some obscure scientific signs no one ever needs.<br /><br /><br /><br />
+        upper case (A - Z), including Small Caps<br />
+        <img src="img/overviews-rex-maj.png" alt="upper case letters of the typeface Rex Mundi" /><br />
+        lower case (a - z), additional glyphs (Euro-sign € ...)<br />
+        <img src="img/overviews-rex-min.png" alt="lower case letters of the typeface Rex Mundi" /><br />
+        numbers (1 - 0), medieval and table, punctuation, scientific stuff<br />
+        <img src="img/overviews-rex-num.png" alt="numbers of the typeface Rex Mundi" /><br />
+    </span>
+    </div>
+</div>
+
+<div id="overview-rex_schwer" style="display:none;">
+	<div class="overview">
+    <span>
+        <a href="javascript://" onclick="Effect.toggle('overview-rex_schwer', 'appear'); return false;" class="closebutton">X close</a>
+        <span>Rex Mundi Schwer</span>
+    	designed by<a href="http://www.haikog.de" target="_blank"> Heiko </a><br /><br />
+        Rex Mundi contains our<a href="typesets.html" target="_blank"> advanced typeset. </a>Rex Mundi is available in regular and bold. This is the bold cut.<br /><br />
+        Rex Mundi unites the easy readability in small sizes of the serif with the clarity and lightness of the sans. The serifs in the lower half generate a clear line of text, while the serifless upper halves make for a recognizable and beautiful overall appearance. Rex Mundi is the perfect typeface for running text, tackling display purposes with equal ease. Included are small caps, medieval as well as table numbers and some obscure scientific signs no one ever needs.<br /><br /><br /><br />
+        upper case (A - Z), including Small Caps<br />
+        <img src="img/overviews-rex-schwer-maj.png" alt="upper case letters of the typeface Rex Mundi" /><br />
+        lower case (a - z), additional glyphs (Euro-sign € ...)<br />
+        <img src="img/overviews-rex-schwer-min.png" alt="lower case letters of the typeface Rex Mundi" /><br />
+        numbers (1 - 0), medieval and table, punctuation, scientific stuff<br />
+        <img src="img/overviews-rex-schwer-num.png" alt="numbers of the typeface Rex Mundi" /><br />
+    </span>
+    </div>
+</div>
+
+<div id="overview-healer" style="display:none;">
+	<div class="overview">
+    <span>
+        <a href="javascript://" onclick="Effect.toggle('overview-healer', 'appear'); return false;" class="closebutton">X close</a>
+        <span>Ghana Signpainters Divine Healer</span>
+    	designed by<a href="http://www.haikog.de" target="_blank"> Heiko </a><br /><br />
+        Divine Healer contains our<a href="typesets.html" target="_blank"> basic typeset. </a><br /><br />
+        Divine Healer is one of three fonts inspired by handpainted signs in Ghana. It doesn't contain lowercase letters. Instead, each uppercase glyph has one variant. Due to its very condensed layout, lots of information can be conveyed using very little horizontal space. Perhaps.<br /><br /><br /><br />
+        upper case (A - Z)<br />
+        <img src="img/overviews-healer-maj.png" alt="upper case letters of the typeface Divine Healer" /><br />
+        numbers (1 - 0)<br />
+        <img src="img/overviews-healer-num.png" alt="numbers letters of the typeface Divine Healer" /><br />
+        punctuation, additional glyphs (Euro-sign € ...)<br />
+        <img src="img/overviews-healer-spec.png" alt="special glyphs of the typeface Divine Healer" /><br />
+    </span>
+    </div>
+</div>
+
+<div id="overview-cocktail" style="display:none;">
+	<div class="overview">
+    <span>
+        <a href="javascript://" onclick="Effect.toggle('overview-cocktail', 'appear'); return false;" class="closebutton">X close</a>
+        <span>Ghana Signpainters Cocktail</span>
+    	designed by<a href="http://www.haikog.de" target="_blank"> Heiko </a><br /><br />
+        Cocktail contains our<a href="typesets.html" target="_blank"> basic typeset. </a><br /><br />
+        Cocktail is one of three fonts inspired by handpainted signs in Ghana. It is perfect for lettering stuff with cocktails.<br /><br /><br /><br />
+        upper case (A - Z)<br />
+        <img src="img/overviews-cocktail-maj.png" alt="upper case letters of the typeface Cocktail" /><br />
+        lower case (a-Z)<br />
+        <img src="img/overviews-cocktail-min.png" alt="numbers letters of the typeface Cocktail" /><br />
+        numbers (1 - 0), punctuation, additional glyphs (Euro-sign € ...)<br />
+        <img src="img/overviews-cocktail-spec.png" alt="special glyphs of the typeface Cocktail" /><br />
+    </span>
+    </div>
+</div>
+
+<div id="overview-safari" style="display:none;">
+	<div class="overview">
+    <span>
+        <a href="javascript://" onclick="Effect.toggle('overview-safari', 'appear'); return false;" class="closebutton">X close</a>
+        <span>Ghana Signpainters Safari</span>
+    	designed by<a href="http://www.haikog.de" target="_blank"> Heiko </a><br /><br />
+        Safari contains our<a href="typesets.html" target="_blank"> basic typeset. </a><br /><br />
+        Safari is one of three fonts inspired by handpainted signs in Ghana. It doesn't contain lowercase letters. Instead, each uppercase glyph has a variant.<br /><br /><br /><br />
+        upper case (A - Z)<br />
+        <img src="img/overviews-safari-maj.png" alt="upper case letters of the typeface Safari" /><br />
+        lower case (a-Z)<br />
+        <img src="img/overviews-safari-num.png" alt="numbers letters of the typeface Safari" /><br />
+        numbers (1 - 0), punctuation, additional glyphs (Euro-sign € ...)<br />
+        <img src="img/overviews-safari-spec.png" alt="special glyphs of the typeface Safari" /><br />
+    </span>
+    </div>
+</div>
+
+<div id="overview-pappe" style="display:none;">
+	<div class="overview">
+    <span>
+        <a href="javascript://" onclick="Effect.toggle('overview-pappe', 'appear'); return false;" class="closebutton">X close</a>
+        <span>Pappe</span>
+    	designed by <a href="http://www.frgr.de" target="_blank">Frank</a><br /><br />
+        Pappe contains our<a href="typesets.html" target="_blank"> basic typeset. </a><br /><br />
+        Pappe contains letters.<br /><br /><br /><br />
+        upper case (A - Z)<br />
+        <img src="img/overviews-pappe-maj.png" alt="upper case letters of the typeface Pappe" /><br />
+        lower case (a-Z)<br />
+        <img src="img/overviews-pappe-num.png" alt="numbers letters of the typeface Pappe" /><br />
+        numbers (1 - 0), punctuation, additional glyphs (Euro-sign € ...)<br />
+        <img src="img/overviews-pappe-spec.png" alt="special glyphs of the typeface Pappe" /><br />
+    </span>
+    </div>
+</div>
+
+<div id="overview-charmin" style="display:none;">
+	<div class="overview">
+    <span>
+        <a href="javascript://" onclick="Effect.toggle('overview-charmin', 'appear'); return false;" class="closebutton">X close</a>
+        <span>Charmin Armin</span>
+    	designed by <a href="http://www.frgr.de" target="_blank">Frank</a><br /><br />
+        Charmin Armin contains our<a href="typesets.html" target="_blank"> basic typeset. </a><br /><br />
+        Charmin Armin contains letters.<br /><br /><br /><br />
+        upper case (A - Z)<br />
+        <img src="img/overviews-charmin-maj.png" alt="upper case letters of the typeface Charmin Armin" /><br />
+        lower case (a-Z)<br />
+        <img src="img/overviews-charmin-min.png" alt="numbers letters of the typeface Charmin Armin" /><br />
+        numbers (1 - 0), punctuation, additional glyphs (Euro-sign € ...)<br />
+        <img src="img/overviews-charmin-spec.png" alt="special glyphs of the typeface Charmin Armin" /><br />
+    </span>
+    </div>
+</div>
+
+<!--<div id="overview-elan" style="display:none;">
+	<div class="overview">
+    <span>
+        <a href="javascript://" onclick="Effect.toggle('overview-elan', 'appear'); return false;" class="closebutton">X close</a>
+        <span>Elan</span>
+    	designed by <a href="http://www.frgr.de" target="_blank">Frank</a><br /><br />
+        Elan contains our<a href="typesets.html" target="_blank"> basic typeset. </a><br /><br />
+        Elan contains letters.<br /><br /><br /><br />
+        upper case (A - Z)<br />
+        <img src="img/overviews-elan-maj.png" alt="upper case letters of the typeface Elan" /><br />
+        lower case (a-Z)<br />
+        <img src="img/overviews-elan-min.png" alt="numbers letters of the typeface Elan" /><br />
+        numbers (1 - 0), punctuation, additional glyphs (Euro-sign € ...)<br />
+        <img src="img/overviews-elan-spec.png" alt="special glyphs of the typeface Elan" /><br />
+    </span>
+    </div>
+</div>-->
+
+<div id="overview-roundenau" style="display:none;">
+	<div class="overview">
+    <span>
+        <a href="javascript://" onclick="Effect.toggle('overview-roundenau', 'appear'); return false;" class="closebutton">X close</a>
+        <span>Roundenau</span>
+    	designed by <a href="http://www.frgr.de" target="_blank">Frank</a><br /><br />
+        Roundenau Basic (free) contains our<a href="typesets.html" target="_blank"> basic typeset. </a><br />
+        Roundenau Advanced contains the<a href="typesets.html" target="_blank"> advanced typeset. </a><br /><br />
+        <br /><br /><br />
+        upper case (A - Z)<br />
+        <img src="img/overviews-roundenau-maj.png" alt="upper case letters of the typeface Roundenau" /><br />
+        lower case (a-Z)<br />
+        <img src="img/overviews-roundenau-min.png" alt="numbers letters of the typeface Roundenau" /><br />
+        numbers (1 - 0), punctuation, additional glyphs (Euro-sign € ...)<br />
+        <img src="img/overviews-roundenau-spec.png" alt="special glyphs of the typeface Roundenau" /><br />
+    </span>
+    </div>
+</div>
+
+<div id="overview-coswig" style="display:none;">
+	<div class="overview">
+    <span>
+        <a href="javascript://" onclick="Effect.toggle('overview-coswig', 'appear'); return false;" class="closebutton">X close</a>
+        <span>Coswig</span>
+    	designed by <a href="http://www.frgr.de" target="_blank">Frank</a><br /><br />
+        Coswig contains our<a href="typesets.html" target="_blank"> basic typeset. </a><br /><br />
+        <br /><br /><br />
+        upper case (A - Z)<br />
+        <img src="img/overviews-coswig-maj.png" alt="upper case letters of the typeface Coswig" /><br />
+        lower case (a-Z)<br />
+        <img src="img/overviews-coswig-num.png" alt="numbers letters of the typeface Coswig" /><br />
+        numbers (1 - 0), punctuation, additional glyphs (Euro-sign € ...)<br />
+        <img src="img/overviews-coswig-spec.png" alt="special glyphs of the typeface Coswig" /><br />
+    </span>
+    </div>
+</div>
+
+<div id="overview-senor" style="display:none;">
+	<div class="overview">
+    <span>
+        <a href="javascript://" onclick="Effect.toggle('overview-senor', 'appear'); return false;" class="closebutton">X close</a>
+        <span>Señor Huerta</span>
+    	designed by <a href="http://www.conestruction.blogspot.com" target="_blank">The Conestruction Inc.</a><br /><br />
+        Señor Huerta contains our<a href="typesets.html" target="_blank"> basic typeset. </a><br /><br />
+        Señor Huerta contains letters.<br /><br /><br /><br />
+        upper case (A - Z)<br />
+        <img src="img/overviews-senor-maj.png" alt="upper case letters of the typeface Señor Huerta" /><br />
+        lower case (a-Z)<br />
+        <img src="img/overviews-senor-num.png" alt="numbers letters of the typeface Señor Huerta" /><br />
+        numbers (1 - 0), punctuation, additional glyphs (Euro-sign € ...)<br />
+        <img src="img/overviews-senor-spec.png" alt="special glyphs of the typeface Señor Huerta" /><br />
+    </span>
+    </div>
+</div>
+
+<div id="overview-druckerei" style="display:none;">
+	<div class="overview">
+    <span>
+        <a href="javascript://" onclick="Effect.toggle('overview-druckerei', 'appear'); return false;" class="closebutton">X close</a>
+        <span>Druckerei</span>
+    	designed by<a href="http://www.haikog.de" target="_blank"> Heiko </a><br /><br />
+        Druckerei contains our<a href="typesets.html" target="_blank"> advanced typeset. </a><br /><br />
+        Druckerei sports up to five different variants per glyph. A specially developed contextsensitive opentype feature replaces typed letters in a quasi-random fashion with one of their variants to achieve an almost handprinted appearance. A special "circle" glyph can be combined with any other glyph to produce circled numbers and the like. The light variant to this typeface will perhaps be digitalized soonish.<br /><br /><br /><br />
+        almost every glyph is included in numerous variants<br />
+        <img src="img/overviews-druckerei-spec.png" alt="variant letters of the typeface Druckerei" /><br />
+        upper case (A - Z), lower case (a - z)<br />
+        <img src="img/overviews-druckerei-maj.png" alt="upper and lower case letters of the typeface Druckerei" /><br />
+        numbers (1 - 0), punctuation, additional glyphs (Euro-sign € ...)<br />
+        <img src="img/overviews-druckerei-num.png" alt="special glyphs of the typeface Druckerei" /><br />
+    </span>
+    </div>
+</div>
+
+<div id="overview-steelcut" style="display:none;">
+	<div class="overview">
+    <span>
+        <a href="javascript://" onclick="Effect.toggle('overview-steelcut', 'appear'); return false;" class="closebutton">X close</a>
+        <span>Steelcut</span>
+    	designed by<a href="http://www.haikog.de" target="_blank"> Heiko </a><br /><br />
+        Steelcut contains our<a href="typesets.html" target="_blank"> basic typeset. </a><br /><br />
+        Steelcut is available in 7 different variations: Backfill, Solid, Plain, Singleline, Doubleline, Shoenail and Edelweiss. While each of those "Cuts" can be used on its own and is in itself a complete typeface, they also can be combined. Since they all share the same basic layout including spacing and kerning, they can be layered in every combintaion imaginable to create unusual new typefaces. Two of the cuts are available for free, every other cut can be bought seperately or you could get the whole set at once. Additional cuts are planned. The cut Singleline is losely based on the free font <a href="http://www.dafont.com/woodcut.font" target="_blank">Woodcut</a>.<br /><br /><br /><br />
+        available in 7 different variations<br />
+        <img src="img/overviews-steelcut-maj.png" alt="upper case letters of the typeface Steelcut" /><br />
+        upper case (A - Z), numbers (1 - 0), punctuation, additional glyphs (Euro-sign € ...)<br />
+        <img src="img/overviews-steelcut-num.png" alt="numbers letters of the typeface Steelcut" /><br />
+        full layerabality<br />
+        <img src="img/overviews-steelcut-spec.png" alt="special glyphs of the typeface Steelcut" /><br />
+    </span>
+    </div>
+</div>
+
+<div id="overview-micromieps" style="display:none;">
+	<div class="overview">
+    <span>
+        <a href="javascript://" onclick="Effect.toggle('overview-micromieps', 'appear'); return false;" class="closebutton">X close</a>
+        <span>Micromieps</span>
+    	designed by<a href="http://www.misman.de" target="_blank"> Mieps </a><br /><br />
+        Micromieps contains our<a href="typesets.html" target="_blank"> basic typeset. </a><br /><br />
+        <br /><br /><br />
+        upper case (A - Z)<br />
+        <img src="img/overviews-micromieps-maj.png" alt="upper case letters of the typeface Micromieps" /><br />
+        lower case (a - z)<br />
+        <img src="img/overviews-micromieps-min.png" alt="lower case letters of the typeface Micromieps" /><br />
+        numbers (1 - 0), punctuation, additional glyphs (@, €, ...)<br />
+        <img src="img/overviews-micromieps-num.png" alt="number glyphs of the typeface Micromieps" /><br />
+    </span>
+    </div>
+</div>
+
+<div id="overview-internationale" style="display:none;">
+	<div class="overview">
+    <span>
+        <a href="javascript://" onclick="Effect.toggle('overview-internationale', 'appear'); return false;" class="closebutton">X close</a>
+        <span>Internationale</span>
+    	designed by<a href="http://www.misman.de" target="_blank"> Mieps </a><br /><br />
+        Internationale contains our<a href="typesets.html" target="_blank"> basic typeset. </a><br /><br />
+        Internationale should be used to label tea-filled crates.<br /><br /><br /><br />
+        upper case (A - Z)<br />
+        <img src="img/overviews-internationale-maj.png" alt="upper case letters of the typeface Internationale" /><br />
+        lower case (a - z)<br />
+        <img src="img/overviews-internationale-min.png" alt="lower case letters of the typeface Internationale" /><br />
+        numbers (1 - 0), punctuation<br />
+        <img src="img/overviews-internationale-num.png" alt="number glyphs of the typeface Internationale" /><br />
+    </span>
+    </div>
+</div>
+
+<div id="overview-pichard" style="display:none;">
+	<div class="overview">
+    <span>
+        <a href="javascript://" onclick="Effect.toggle('overview-pichard', 'appear'); return false;" class="closebutton">X close</a>
+        <span>Pichard</span>
+    	designed by<a href="http://www.misman.de" target="_blank"> Mieps </a><br /><br />
+        Pichard contains our<a href="typesets.html" target="_blank"> basic typeset. </a><br /><br />
+        Pichard only contains upper case letters. Pichard is the perfect typeface to design your next anisette etiquette.<br /><br /><br /><br />
+        upper case (A - Z)<br />
+        <img src="img/overviews-pichard-maj.png" alt="upper case letters of the typeface Pichard" /><br />
+        numbers (1 - 0)<br />
+        <img src="img/overviews-pichard-num.png" alt="numbers letters of the typeface Pichard" /><br />
+        punctuation, additional glyphs<br />
+        <img src="img/overviews-pichard-spec.png" alt="special glyphs of the typeface Pichard" /><br />
+    </span>
+    </div>
+</div>
+
+
+
+<!-- INIT DWNLOADS -->
+<script type="text/javascript">
+ahah('counters/KF_roundenau_basic.zip.txt?var1=xxy&amp;var2=yyx','downloadsroundenau'); 
+<!--ahah('counters/steelcut-sgl.otf.txt?var1=xxx&amp;var2=yyy','downloadssteelcut');-->
+
+</script>
+
+</body>
+</html>

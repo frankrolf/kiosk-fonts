@@ -1,0 +1,7 @@
+<html><head><title>404 Not Found</title></head>
+<body background="img/stripez.png">
+<h1 style="font-family:Roundenau, Arial, Helvetica, sans-serif; font-size:200px;">404 Not Found</h1>
+
+The requested URL <!--#echo var="REQUEST_URI" --> does not exist.
+
+</body></html>

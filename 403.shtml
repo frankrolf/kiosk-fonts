@@ -1,0 +1,7 @@
+<html><head><title>403 Permission Denied</title></head>
+<body background="img/stripez.png">
+<h1 style="font-family:Roundenau, Arial, Helvetica, sans-serif; font-size:200px;">403 Permission Denied</h1>
+
+You do not have permission for this request <!--#echo var="REQUEST_URI" -->
+
+</body></html>
